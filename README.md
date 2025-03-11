@@ -16,7 +16,7 @@ Este es un sistema web para la gestión de ingresos y gastos, desarrollado con A
 ## Configuración del Proyecto
 1. Clona este repositorio:
    ```sh
-   git clone https://github.com/tuusuario/control-ingreso-gasto.git
+[  git clone https://github.com/tuusuario/control-ingreso-gasto.git](https://github.com/NestorAndres1215/Control-de-Ingreso-y-Gasto.git](https://github.com/NestorAndres1215/Control-de-Ingreso-y-Gasto.git)
    ```
 2. Abre el proyecto en Visual Studio 2019.
 3. Configura la cadena de conexión en `appsettings.json`.
