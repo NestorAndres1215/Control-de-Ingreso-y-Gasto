@@ -1,0 +1,106 @@
+﻿@model IEnumerable<ControlIngresoGasto.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Mantenimiento de Categorías";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center mt-3 animate__animated animate__fadeInDown">Mantenimiento de Categorías</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <p class="lead">Gestione las categorías de ingresos y gastos</p>
+    <a class="btn btn-success btn-lg animate__animated animate__pulse animate__infinite btn-animate" asp-action="Create">
+        <i class="fas fa-plus"></i> Crear Nueva
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover shadow-lg rounded-3 bg-white animate__animated animate__fadeIn">
+        <thead class="table-primary text-center">
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center align-middle table-row">
+                    <td>@Html.DisplayFor(modelItem => item.NombreCategoria)</td>
+                    <td>
+                        @if (item.Tipo == "IN")
+                        {
+                            <span class="badge bg-success">Ingreso</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Gasto</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Estado == true)
+                        {
+                            <span class="badge bg-primary">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Inactivo</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm btn-animate" asp-action="Edit" asp-route-id="@item.Id">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a class="btn btn-info btn-sm btn-animate" asp-action="Details" asp-route-id="@item.Id">
+                            <i class="fas fa-info-circle"></i> Detalles
+                        </a>
+                        <a class="btn btn-danger btn-sm btn-animate" asp-action="Delete" asp-route-id="@item.Id">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+
+
+
+    /* Sombra y bordes redondeados en la tabla */
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+
+        .btn-animate:hover::after {
+            width: 200%;
+            left: -50%;
+        }
+
+        .btn-animate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+    /* Efecto "wave" al hacer clic */
+    .btn-animate:active {
+        transform: scale(0.95);
+    }
+
+    /* Botón con efecto de parpadeo */
+    .btn-success {
+        animation: pulse 1.5s infinite;
+    }
+
+   
+</style>
+
+<!-- Enlace a Animate.css para las animaciones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<!-- Enlace a FontAwesome para los iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

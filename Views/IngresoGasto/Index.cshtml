@@ -1,0 +1,125 @@
+﻿@model IEnumerable<ControlIngresoGasto.Models.IngresoGasto>
+
+@{
+    ViewData["Title"] = "Mantenimiento de Ingresos y Gastos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center  mt-3 animate__animated animate__fadeInDown">Mantenimiento de Ingresos y Gastos</h1>
+
+<form asp-action="index" class="bg-white p-4 rounded shadow-lg animate__animated animate__fadeIn">
+    <div class="row align-items-end">
+        <div class="col-md-2">
+            <label class="form-label fw-bold">Mes/Año:</label>
+        </div>
+        <div class="col-md-2">
+            <input type="number" class="form-control text-right" name="mes" min="1" max="12" value="@ViewBag.mes" placeholder="Mes (1-12)" />
+        </div>
+        <div class="col-md-2">
+            <input type="number" class="form-control text-right" autocomplete="off" name="anio" value="@ViewBag.anio" placeholder="Año" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Consultar" class="btn btn-primary btn-lg shadow-sm btn-animate" />
+        </div>
+    </div>
+</form>
+
+<div class="d-flex justify-content-between align-items-center my-3">
+    <p >Visualice y gestione los ingresos y gastos registrados</p>
+    <a asp-action="Create" class="btn btn-success btn-lg animate__animated animate__pulse animate__infinite btn-animate">
+        <i class="fas fa-plus"></i> Crear Nuevo
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover shadow-lg rounded-3 bg-white animate__animated animate__fadeIn">
+        <thead class="table-primary text-center">
+            <tr>
+                <th>Categoría</th>
+                <th>Fecha</th>
+                <th>Valor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center align-middle table-row">
+                    <td>@Html.DisplayFor(modelItem => item.Categoria.NombreCategoria)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                    <td>
+                        @if (item.Categoria.Tipo == "IN")
+                        {
+                            <span class="text-success fw-bold">+@Html.DisplayFor(modelItem => item.Valor)</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger fw-bold">-@Html.DisplayFor(modelItem => item.Valor)</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-animate">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm btn-animate">
+                            <i class="fas fa-info-circle"></i> Detalles
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm btn-animate">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+
+
+    /* Sombra y bordes redondeados en la tabla */
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Animación en los botones */
+    .btn-animate {
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-animate::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-animate:hover::after {
+        width: 200%;
+        left: -50%;
+    }
+
+    .btn-animate:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Botón con efecto de parpadeo */
+    .btn-success {
+        animation: pulse 1.5s infinite;
+    }
+
+   
+</style>
+
+<!-- Enlace a Animate.css para las animaciones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<!-- Enlace a FontAwesome para los iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

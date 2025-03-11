@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Control de Ingresos y Gastos";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="text-primary fw-bold animate__animated animate__fadeInDown">
+        <i class="fas fa-chart-line"></i> @ViewData["Title"]
+    </h1>
+    <p class="lead text-muted animate__animated animate__fadeInUp">
+        Un sistema eficiente para gestionar y monitorear tus ingresos y gastos.
+        Te permite registrar transacciones, clasificarlas por categorías y visualizar
+        el estado financiero de manera sencilla.
+    </p>
+    <hr class="my-4">
+
+    <div class="mt-4">
+        <h3 class="text-secondary">📌 Características principales</h3>
+        <ul class="list-group list-group-flush text-start d-inline-block">
+            <li class="list-group-item"><i class="fas fa-wallet text-success"></i> Registro y gestión de ingresos y gastos.</li>
+            <li class="list-group-item"><i class="fas fa-list text-info"></i> Clasificación de transacciones en categorías personalizadas.</li>
+            <li class="list-group-item"><i class="fas fa-chart-pie text-warning"></i> Visualización clara del balance financiero.</li>
+            <li class="list-group-item"><i class="fas fa-user-shield text-danger"></i> Seguridad en la gestión de datos.</li>
+            <li class="list-group-item"><i class="fas fa-history text-primary"></i> Historial detallado de movimientos.</li>
+        </ul>
+    </div>
+</div>
+<style>
+
+    /* Centrar contenido */
+    .container {
+        max-width: 800px;
+    }
+
+    /* Animaciones */
+    .animate__fadeInDown {
+        animation: fadeInDown 1s;
+    }
+
+    .animate__fadeInUp {
+        animation: fadeInUp 1s;
+    }
+
+    /* Botones con animación */
+    .btn-animate {
+        transition: all 0.3s ease-in-out;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: bold;
+    }
+
+        .btn-animate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-animate:active {
+            transform: scale(0.95);
+        }
+
+</style>

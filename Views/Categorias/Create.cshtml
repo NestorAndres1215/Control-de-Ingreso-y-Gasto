@@ -1,0 +1,120 @@
+﻿@model ControlIngresoGasto.Models.Categoria
+
+@{
+    ViewData["Title"] = "Crear Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center mt-3 animate__animated animate__fadeInDown">Crear Nueva Categoría</h1>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6 card shadow-lg p-4 bg-white rounded">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="NombreCategoria" class="form-label"></label>
+                <input asp-for="NombreCategoria" class="form-control shadow-sm" autocomplete="off" />
+                <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Tipo" class="form-label"></label>
+                <select asp-for="Tipo" class="form-control custom-select">
+                    <option value="IN">Ingreso</option>
+                    <option value="GA">Gasto</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label">Estado</label>
+                <select asp-for="Estado" class="form-control custom-select">
+                    <option value="true">Activo</option>
+                    <option value="false">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary btn-animate">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </a>
+                <button type="submit" class="btn btn-primary btn-animate">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+
+
+    /* Tarjetas de formulario con sombra */
+    .card {
+        border-radius: 10px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Campos de formulario estilizados */
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+        }
+
+    /* Botones con animación */
+    .btn-animate {
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-weight: bold;
+    }
+
+        .btn-animate::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-animate:hover::after {
+            width: 200%;
+            left: -50%;
+        }
+
+        .btn-animate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-animate:active {
+            transform: scale(0.95);
+        }
+
+    /* Animación de fade-in */
+    .animate__fadeInDown {
+        animation: fadeInDown 1s;
+    }
+
+    /* Centrado del formulario */
+    .row.justify-content-center {
+        margin-top: 50px;
+    }
+
+</style>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

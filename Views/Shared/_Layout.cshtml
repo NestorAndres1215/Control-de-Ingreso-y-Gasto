@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ControlIngresoGasto</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom border-bottom shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                    Control Ingreso Gasto
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Categorias" asp-action="Index">
+                                Categorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="IngresoGasto" asp-action="Index">
+                                Ingreso-Gasto
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                Privacy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <main class="content container">
+            @RenderBody()
+        </main>
+
+        <footer class="footer-custom">
+            <div class="container">
+                <p class="mb-0">
+                    &copy; @DateTime.Now.Year - Control Ingreso Gasto |
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-light">
+                        Política de Privacidad
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+
+    <style>
+        /* Estilos personalizados para el footer */
+        /* Asegura que el footer quede fijo abajo */
+        html, body {
+            height: 100%;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .footer-custom {
+            background-color: #1c2331; /* Mantiene el azul oscuro */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+
+        .bg-custom {
+            background-color: #1c2331 !important;
+        }
+
+        .navbar-nav .nav-link {
+            transition: 0.3s;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #a3d2ff !important;
+            }
+
+        .footer-custom {
+            background-color: #1c2331; /* Azul oscuro */
+            color: #dcdcdc; /* Gris claro */
+            padding: 15px 0; /* Más espaciado arriba y abajo */
+            font-size: 16px; /* Aumenta el tamaño del texto */
+        }
+
+            .footer-custom a {
+                color: #ffcc00; /* Amarillo dorado */
+                text-decoration: none;
+                font-weight: bold; /* Destaca los enlaces */
+            }
+
+                .footer-custom a:hover {
+                    color: #ffd700; /* Un poco más brillante al pasar el cursor */
+                    text-decoration: underline;
+                }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
